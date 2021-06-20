@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Debouncing</title>
+    </head>
+    <body>
+        
+        <input type="text" onkeyup="debounced()">
+
+        <script>
+
+            function apicall(){
+                console.log('apicall')
+            }
+
+            function debounce(func, delay){
+                let timer
+                return function(){
+                    const context = this
+                    const args = arguments
+                    clearTimeout(timer)
+                    timer = setTimeout(()=>{
+                        func.apply(context, args)
+                    }, delay)
+                }
+            }
+
+            const debounced = debounce(apicall, 300)
+
+        </script>
+
+    </body>
+</html>
